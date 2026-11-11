@@ -1,7 +1,7 @@
 # 001 — por que tudo fica mais caro e seu salário não?
 
 - idioma: português (br)
-- duração alvo: 35s, fala rápida (~3 palavras por segundo, 113 palavras)
+- duração alvo: 35s, fala rápida (~3 palavras por segundo, 106 palavras)
 - formato: 9:16, 12 cenas de 2 a 4s
 - cenário: laboratório do theo. no centro da bancada, uma balança de dois pratos:
   de um lado um envelope escrito "salário", do outro um carrinho de mercado em miniatura.
