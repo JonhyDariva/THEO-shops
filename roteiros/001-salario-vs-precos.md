@@ -1,7 +1,7 @@
 # 001 — por que tudo fica mais caro e seu salário não?
 
 - idioma: português (br)
-- duração alvo: 35s, fala rápida (~3 palavras por segundo, 106 palavras)
+- duração alvo: 36s, fala rápida (~3 palavras por segundo, 110 palavras)
 - formato: 9:16, 12 cenas de 2 a 4s
 - cenário: laboratório do theo. no centro da bancada, uma balança de dois pratos:
   de um lado um envelope escrito "salário", do outro um carrinho de mercado em miniatura.
@@ -22,7 +22,15 @@
 | 9 | aumento que só empata com a inflação não é aumento. | neutro, sério | close | fala devagar pra câmera, mão espalmada |
 | 10 | é só você voltando pro lugar onde já tava. | desconfiado | plano médio | a balança volta a ficar nivelada, ele dá de ombros |
 | 11 | quer ganhar da inflação? seu salário precisa subir mais que ela. | animado | close | sorri, coloca um segundo envelope no prato e o salário finalmente pesa mais |
-| 12 | segue aqui que eu te explico o resto. | animado | plano médio | aponta pra baixo (botão de seguir), pisca |
+| 12 | senão, todo ano é a mesma história. e é por isso que... | desconfiado | plano médio fechando pra close | dá de ombros, depois se inclina pra câmera e termina na mesma pose e expressão do início da cena 1 |
+
+## loop
+- a última fala fica em aberto ("e é por isso que...") e emenda na primeira
+  ("seu salário subiu. e mesmo assim você tá mais pobre."). o vídeo recomeça sem o espectador perceber o corte.
+- imagem: o último quadro da cena 12 tem que ser igual ao primeiro quadro da cena 1
+  (mesmo close, mesma pose, sobrancelha levantada). gerar a cena 12 usando o primeiro quadro da cena 1 como quadro final.
+- áudio: sem silêncio no fim da cena 12 nem no começo da cena 1. música em loop, sem final marcado.
+- sem "segue aqui" falado, porque quebra o loop. o chamado pra seguir entra como texto na tela nas cenas 11 e 12.
 
 ## notas de produção
 
