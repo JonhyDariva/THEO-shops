@@ -1,18 +1,24 @@
 {
  "titulo": "por que tudo fica mais caro e seu salário não?",
+ "descricao": "seu salário subiu e mesmo assim você está mais pobre. o theo mostra na balança por quê.",
+ "hashtags": "#economia #inflacao #salario #dinheiro #shorts",
  "lang": "pt",
+ "voz": "MK5tXPmT83J5SUlpUo4K",
+ "legenda_y": 1200,
+ "trilha_vol": 0.07,
+ "loop": true,
  "cenas": [
-  {"fala": "Seu salário subiu. E mesmo assim você tá mais pobre."},
-  {"fala": "Não é impressão sua. É matemática."},
-  {"fala": "O preço do mercado muda toda semana.", "modo": "acelera"},
-  {"fala": "O seu salário? Muda uma vez por ano."},
-  {"fala": "E quando muda, só repõe a inflação que já passou."},
-  {"fala": "Ou seja: você passa o ano inteiro correndo atrás.", "modo": "corta"},
-  {"fala": "E comida e aluguel muitas vezes sobem mais que a média."},
-  {"fala": "O índice oficial diz uma coisa. O seu carrinho diz outra."},
-  {"fala": "Aumento que só empata com a inflação não é aumento."},
-  {"fala": "É só você voltando pro lugar onde já tava."},
-  {"fala": "Quer ganhar da inflação? Seu salário precisa subir mais que ela.", "modo": "acelera"},
-  {"fala": "Senão, todo ano é a mesma história. E é por isso que,"}
+  {"fala": "Seu salário subiu. E mesmo assim você tá mais pobre.", "emocao": "desconfiado", "quadro": "close", "dur": 4, "acao": "sobrancelha levantada, aponta pro espectador"},
+  {"fala": "Não é impressão sua. É matemática.", "emocao": "animado", "quadro": "medio", "dur": 4, "acao": "nega com o dedo, depois abre os braços mostrando a balança"},
+  {"fala": "O preço do mercado muda toda semana.", "emocao": "chocado", "quadro": "carrinho", "dur": 4, "modo": "acelera", "acao": "compras pulam pra dentro do carrinho até transbordar, o prato desce"},
+  {"fala": "O seu salário? Muda uma vez por ano.", "emocao": "irônico", "quadro": "medio", "dur": 4, "acao": "bate o dedo nas moedas, olha pro relógio no pulso"},
+  {"fala": "E quando muda, só repõe a inflação que já passou.", "emocao": "bravo", "quadro": "close", "dur": 4, "acao": "balança a cabeça, dedo em riste"},
+  {"fala": "Ou seja: você passa o ano inteiro correndo atrás.", "emocao": "desesperado", "quadro": "esteira", "dur": 4, "modo": "corta", "acao": "corre na esteira, tenta agarrar o carrinho e erra"},
+  {"fala": "E comida e aluguel muitas vezes sobem mais que a média.", "emocao": "desconfiado", "quadro": "close", "dur": 6, "acao": "pesa um pão numa mão e uma chave na outra"},
+  {"fala": "O índice oficial diz uma coisa. O seu carrinho diz outra.", "emocao": "bravo", "quadro": "medio", "dur": 6, "acao": "aponta com o polegar pro gráfico da lousa, depois pro carrinho"},
+  {"fala": "Aumento que só empata com a inflação não é aumento.", "emocao": "sério", "quadro": "close", "dur": 4, "acao": "mão espalmada pra câmera, aceno firme"},
+  {"fala": "É só você voltando pro lugar onde já tava.", "emocao": "amargo", "quadro": "medio", "dur": 4, "acao": "mostra a balança nivelada e dá de ombros"},
+  {"fala": "Quer ganhar da inflação? Seu salário precisa subir mais que ela.", "emocao": "animado", "quadro": "balanca", "dur": 6, "modo": "acelera", "acao": "mão solta mais moedas, o prato das moedas desce, joinha"},
+  {"fala": "Senão, todo ano é a mesma história. E é por isso que,", "emocao": "desconfiado", "quadro": "medio", "quadro_final": "close", "dur": 6, "sync": "remap", "acao": "dá de ombros, câmera fecha no rosto e termina no quadro inicial da cena 1"}
  ]
 }

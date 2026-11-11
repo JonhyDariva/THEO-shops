@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """monta um short do theo a partir dos clipes e das falas.
 
+  python3 motor/montar.py 001 tudo      faz as três etapas abaixo em sequência e para se o check falhar
   python3 motor/montar.py 001 base      junta clipes + narração limpa -> out/001_base.mp4 e out/001_narr.wav
   python3 motor/montar.py 001 tempo     transcreve a narração (faster-whisper) -> out/001_tm.json + check
-  python3 motor/montar.py 001 final     queima legenda e mixa a trilha -> final/001.mp4
+  python3 motor/montar.py 001 final     queima legenda e mixa a trilha -> final/001.mp4 + final/001.txt
+  python3 motor/montar.py 001 final y=1100 vol=0.1    ajusta altura da legenda e volume da trilha sem refazer o resto
+
+entradas: roteiros/001.json, clipes/001/cNN.mp4, audio/001/fNN.mp3, audio/001/trilha.mp3
 
 regra herdada do motor do the real coin: o tempo da legenda vem do áudio real transcrito, nunca de estimativa.
 """
@@ -27,13 +31,19 @@ def plano(n):
     return json.load(open(P('roteiros', f'{n}.json')))
 
 
+def midia(pasta, n, nome):
+    # prefere a subpasta do short (clipes/001/c01.mp4); aceita o formato antigo (clipes/c01.mp4)
+    a = P(pasta, n, nome)
+    return a if os.path.exists(a) else P(pasta, nome)
+
+
 def base(n):
     pl = plano(n)
     os.makedirs(P('out', n), exist_ok=True)
     vs, au, t = [], [], 0.0
     for i, c in enumerate(pl['cenas'], 1):
         k = f'{i:02d}'
-        clip, fala = P('clipes', f'c{k}.mp4'), P('audio', f'f{k}.mp3')
+        clip, fala = midia('clipes', n, f'c{k}.mp4'), midia('audio', n, f'f{k}.mp3')
         cd, ad = dur(clip), dur(fala)
         modo = c.get('modo', 'dublado')
         if modo == 'dublado':        # clipe já cortado no tamanho da fala
@@ -146,16 +156,22 @@ def ass(n, total, y):
     return f
 
 
-def final(n, y=1200, vol=0.07):
+def final(n, y=None, vol=None):
+    pl = plano(n)
+    y = int(y if y is not None else pl.get('legenda_y', 1200))
+    vol = float(vol if vol is not None else pl.get('trilha_vol', 0.07))
     total = json.load(open(P('out', f'{n}_cenas.json')))['total']
     f = ass(n, total, y)
     os.makedirs(P('final'), exist_ok=True)
     o = P('final', f'{n}.mp4')
-    run('ffmpeg', '-y', '-v', 'error', '-i', P('out', f'{n}_base.mp4'), '-stream_loop', '-1', '-i', P('audio', 'trilha.mp3'),
+    run('ffmpeg', '-y', '-v', 'error', '-i', P('out', f'{n}_base.mp4'), '-stream_loop', '-1', '-i', midia('audio', n, 'trilha.mp3'),
         '-filter_complex',
         f"[0:v]ass='{f}'[v];[1:a]volume={vol}[m];[0:a]volume=1.0[n];[n][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]",
         '-map', '[v]', '-map', '[a]', '-t', f'{total:.4f}', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p',
         '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', o)
+    # kit de postagem, igual ao motor do the real coin
+    kit = f"{pl.get('titulo', '')}\n\n{pl.get('descricao', '')}\n\n{pl.get('hashtags', '')}\n"
+    open(P('final', f'{n}.txt'), 'w').write(kit)
     print('pronto ->', o, f'({dur(o):.2f}s, legenda em y={y}, trilha em {vol})')
 
 
@@ -166,5 +182,12 @@ if __name__ == '__main__':
     kw = dict(a.split('=') for a in sys.argv[3:])
     if cmd == 'base': base(n)
     elif cmd == 'tempo': tempo(n)
-    elif cmd == 'check': check(n)
-    elif cmd == 'final': final(n, int(kw.get('y', 1200)), float(kw.get('vol', 0.07)))
+    elif cmd == 'check': sys.exit(1 if check(n) else 0)
+    elif cmd == 'final': final(n, kw.get('y'), kw.get('vol'))
+    elif cmd == 'tudo':
+        base(n); tempo(n)
+        if check(n):
+            sys.exit('check falhou: não renderizei. confira as falas e os áudios.')
+        final(n, kw.get('y'), kw.get('vol'))
+    else:
+        sys.exit(__doc__)
