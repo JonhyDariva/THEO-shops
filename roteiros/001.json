@@ -1,0 +1,18 @@
+{
+ "titulo": "por que tudo fica mais caro e seu salário não?",
+ "lang": "pt",
+ "cenas": [
+  {"fala": "Seu salário subiu. E mesmo assim você tá mais pobre."},
+  {"fala": "Não é impressão sua. É matemática."},
+  {"fala": "O preço do mercado muda toda semana.", "modo": "acelera"},
+  {"fala": "O seu salário? Muda uma vez por ano."},
+  {"fala": "E quando muda, só repõe a inflação que já passou."},
+  {"fala": "Ou seja: você passa o ano inteiro correndo atrás.", "modo": "corta"},
+  {"fala": "E comida e aluguel muitas vezes sobem mais que a média."},
+  {"fala": "O índice oficial diz uma coisa. O seu carrinho diz outra."},
+  {"fala": "Aumento que só empata com a inflação não é aumento."},
+  {"fala": "É só você voltando pro lugar onde já tava."},
+  {"fala": "Quer ganhar da inflação? Seu salário precisa subir mais que ela.", "modo": "acelera"},
+  {"fala": "Senão, todo ano é a mesma história. E é por isso que,"}
+ ]
+}
